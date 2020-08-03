@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './Components/Main';
+import './styles/stylesheet.css'
+import {BrowserRouter} from 'react-router-dom'
+import {createStore} from 'redux'
+import rootReducer from './redux/reducer'
 
+const store = createStore(rootReducer)
 
-const element = React.createElement('h1', null, 'Hellow WOfhsdklf');
 ReactDOM.render(
-  <Main/>,
-  document.getElementById('root')
+  <BrowserRouter><Main/></BrowserRouter>,document.getElementById('root')
 );
