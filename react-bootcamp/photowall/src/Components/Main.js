@@ -17,9 +17,15 @@ class Main extends Component{
         console.log('constructor')
     }
 
-//    componentDidMount(){
-//        this.props.removePost(1)
-//    }
+
+    state = {loading: true}
+
+   componentDidMount(){
+       this.props.startLoadingPost().then(()=>{
+           this.setState({loading: false})
+       })
+       this.props.startLoadingComments()
+   }
     render(){
         console.log("fhidushf")
         console.log(this.props)
@@ -39,7 +45,7 @@ class Main extends Component{
                 )}/> 
 
                 <Route path = "/single/:id" render = {(params)=>( 
-                    <Single {...this.props} {...params}/>
+                    <Single loading={this.state.loading} {...this.props} {...params}/>
                 )}/>            
             </div>
         )
